@@ -1,7 +1,7 @@
 FROM hhvm/hhvm-proxygen:latest
 
 RUN apt-get update -y && apt-get install -y curl php zip unzip
-# Install composer
+
 RUN mkdir /opt/composer
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -11,12 +11,11 @@ RUN php -r "unlink('composer-setup.php');"
 RUN ls
 RUN mv composer.phar /opt/composer/
 
-# Install the app
 RUN rm -rf /var/www
-
 ADD . /var/www
 
-#RUN cd /var/www && hhvm /opt/composer/composer.phar install
+#RUN php /opt/composer/composer.phar config allow-plugins.composer/installers true
+#RUN cd /var/www && php /opt/composer/composer.phar require -n yes | hhvm/hhvm-autoload 
 
 # Reconfigure HHVM
 ADD hhvm.prod.ini /etc/hhvm/site.ini
