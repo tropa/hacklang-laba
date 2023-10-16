@@ -14,9 +14,6 @@ RUN mv composer.phar /opt/composer/
 RUN rm -rf /var/www
 ADD . /var/www
 
-#RUN php /opt/composer/composer.phar config allow-plugins.composer/installers true
-#RUN cd /var/www && php /opt/composer/composer.phar require -n yes | hhvm/hhvm-autoload 
-
 # Reconfigure HHVM
 ADD hhvm.prod.ini /etc/hhvm/site.ini
 
