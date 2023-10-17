@@ -22,6 +22,10 @@ To install composer autoload:
 - `docker exec -it hack-laba bash -c "cd /var/www && php /opt/composer/composer.phar require  hhvm/hsl hhvm/hhvm-autoload"` and press "y" when it asks you.
   Note that 'hack-laba' is predefined Docker container name in file `docker-compose.yml` `container_name` parameter.
 
+How to run HHVM typechecker:
+
+- `docker exec -it hack-laba bash -c "cd /var/www && hh_client"`
+
 #### Project structure
 
 - /
