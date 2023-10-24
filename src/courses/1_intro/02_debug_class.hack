@@ -233,9 +233,9 @@ echo <<<'EOD'
                             
                             <pre><code>#hhvm.log.file = /var/log/hhvm/error.log</code></pre>
                             
-                            Uncomment the line and save the file. Stop the virtual machine and delete the container.
+                            Uncomment the line and save the file. Stop the virtual machine and delete the container and the image.
                             
-                            <pre><code></code></pre>
+                            <pre><code>docker-compose stop</code></pre>
                             <pre><code>docker rm -f hack-laba</code></pre>
 
                             <pre><code>docker rmi hacklang-laba-web</code></pre>
