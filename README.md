@@ -26,6 +26,10 @@ How to run HHVM typechecker:
 
 - `docker exec -it hack-laba bash -c "cd /var/www && hh_client"`
 
+XML-like representation of output:
+
+- `docker exec -it hack-laba bash -c "cd /var/www && php /opt/composer/composer.phar require  facebook/xhp-lib ^4.0`
+
 #### Project structure
 
 - /

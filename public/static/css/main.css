@@ -1,0 +1,54 @@
+.hljs-string, .hljs-variable, .hljs-template-variable, .hljs-strong, .hljs-emphasis, .hljs-quote {
+    color: #df5000 !important;
+}
+
+.hljs-keyword, .hljs-selector-tag, .hljs-type {
+    color: #a71d5d !important;
+}
+
+.source-language-Hack {
+    margin: 0;
+}
+
+.source-language-Hack code{
+    color: #d63384;
+}
+
+.highlight {
+    font-family: "Lucida Console", Monaco, "Courier New", monospace;
+    font-size: 90%;
+    line-height: 1.4em;
+    border-left: 3px solid #fd8724;
+    overflow-x: auto;
+    padding: 10px;
+    margin: 25px 0;
+}
+
+.highlight.fbgfm {
+    padding: 0px;
+}
+
+p + .highlight {
+    margin-top: 0;
+}
+
+pre { overflow-x: auto; }
+pre { 
+    text-align: left;
+    white-space: pre-line;
+    padding-left: 20px;
+ }
+
+ .source-language-Hack .php-comment {
+    color: #8c7272;
+ }
+
+ .source-language-Hack .php-output {
+    background-color: #f3ecec;
+ }
+
+pre code {
+    font-size: .875em;
+    color: #d63384;
+    word-wrap: break-word;
+}
