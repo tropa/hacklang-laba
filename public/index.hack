@@ -2,10 +2,6 @@ namespace Laba;
 
 use namespace Laba\Templates;
 
-//use namespace App\Users;
-
-//use namespace App\Users\Premium as PremiumUser;
-
 <<__EntryPoint>>
 async function main(): Awaitable<void> {
 
@@ -29,42 +25,4 @@ async function main(): Awaitable<void> {
   else {
     await Templates\RenderTemplate();
   }
-
-  
-  
-  
-  
-  
-
- // require_once(__DIR__.'/../vendor/autoload.hack');
- // \Facebook\AutoloadMap\initialize();
-
-  /* Env settings */
-  /*
-  Env\Environment::_SERVER();
-  Env\Environment::_COOKIES();
-  Env\Environment::_GET();
-  Env\Environment::_POST();
-  Env\Environment::_REQUEST();
-  */
-  /* Env settings */
-
- 
-  /* namespaces  */
-
-  // $user = new Users\User("Mikhail");
-  // $user->getName();
-  /*
-    try{
-      $user->setName("Andrei");
-    }
-    catch(\Exception $e){
-      \var_dump($e->getMessage());
-    }
-    
-
-    //$premiumUser = new PremiumUser\PremiumUser('Vasya');
-    //$premiumUser->getName();
-  */
-  /* namespaces  */
 }

@@ -63,7 +63,7 @@ echo <<<'EOD'
                         
 
                         <p>99% of debugging needs during debugging process are covered by this function</p>
-                        <p>It must be used with backslash <code>\\var_dump(\$var);</code> or without <code>var_dump(\$var);</code> depends on namespace. </p>
+                        <p>It must be used with backslash <code>\var_dump($var);</code> or without <code>var_dump($var);</code> depends on namespace. </p>
 
                         <div class="innerContent">
                             <div class="highlight fbgfm source-language-Hack">
@@ -190,9 +190,6 @@ echo <<<'EOD'
 
                         </div>
 
-                        
-                        
-
                     </div>
 
                 </div>
@@ -207,7 +204,7 @@ echo <<<'EOD'
                 <div class="card-body">
                     <div class="alert alert-light" role="alert">
                         <p>
-                            A very rare and inconvenient method, but sometimes it is also useful. In production systems, error output is usually disabled. 
+                            A very rare and inconvenient method in PHP developer's life, but sometimes it is also useful. In production systems, error output is usually disabled. 
                             If something isn't working as expected, the first thing you need to do is figure out where to start looking. In this case, logs can be useful.
                         </p>
 
@@ -225,7 +222,7 @@ echo <<<'EOD'
                         <p>
                             When we enable saving of logs, they will be here
                             <code>/var/log/hhvm/error.log</code>
-                        <p>
+                        </p>
 
                         <p>
                             You can easily enable logs, but in this case the output of errors and messages to the docker window will be automatically disabled, and you will only have to read the logs.
@@ -245,7 +242,7 @@ echo <<<'EOD'
 
                             <pre><code></code></pre>
                             <pre><code>docker-compose up -d</code></pre>
-                        <p>
+                        </p>
 
                         <p>
                         
@@ -279,6 +276,47 @@ echo <<<'EOD'
                                 The contents of the log file will be output to the terminal.
                             </p>
                         </p>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <br/>
+            <br/>
+
+            <h4>3. Using debugger (the most funniest way)</h4>
+
+            <div class="card" >
+                <div class="card-body">
+                    <div class="alert alert-light" role="alert">
+                        <p>
+                            Finally something like  Java :).
+                            Like any serious development environment, VSCode has a debugger.
+                        </p>
+
+                        <p>
+                            Typically, every web application has an error log. There are often a lot of useless messages that the PHP or hack virtual machine considers important. 
+                            By the way, the level of importance can be adjusted if necessary.
+                        </p>
+
+                        <p>
+                            <div class="alert alert-primary" role="alert">
+                                By default, log output is included in the docker window.
+                            </div>
+                        </p>
+                        
+                        <p>
+                            When we enable saving of logs, they will be here
+                            <code>/var/log/hhvm/error.log</code>
+                        </p>
+
+                      
+
+                        
+                            
+
+                        
 
                     </div>
 
