@@ -294,30 +294,6 @@ echo <<<'EOD'
                             Finally something like  Java :).
                             Like any serious development environment, VSCode has a debugger.
                         </p>
-
-                        <p>
-                            Typically, every web application has an error log. There are often a lot of useless messages that the PHP or hack virtual machine considers important. 
-                            By the way, the level of importance can be adjusted if necessary.
-                        </p>
-
-                        <p>
-                            <div class="alert alert-primary" role="alert">
-                                By default, log output is included in the docker window.
-                            </div>
-                        </p>
-                        
-                        <p>
-                            When we enable saving of logs, they will be here
-                            <code>/var/log/hhvm/error.log</code>
-                        </p>
-
-                      
-
-                        
-                            
-
-                        
-
                     </div>
 
                 </div>
