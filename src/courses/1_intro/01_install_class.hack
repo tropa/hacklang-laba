@@ -1,6 +1,6 @@
 namespace Courses;
 
-use type Facebook\XHP\HTML\{a, body, head, html, div, header, span, main, p, hr, ol, li, br, button, code};
+use type Facebook\XHP\HTML\{a, strong, body, head, html, div, header, span, main, p, hr, ol, li, br, button, code};
 use type Facebook\XHP\HTML\{h1, h2, h3, h4, h5, h6};
 
 
@@ -27,6 +27,11 @@ async function render(): Awaitable<void> {
             Due to some readons HHVM & Hack does not work on MacOS so we have to use virtual machine. Docker is a convinient way to start virtual Ubuntu without GUI and use it 
             as a server. We will start it with HHVM and use it the same way we use any internet resource.
           </p>
+
+        <p>
+          This page was made using the hack's template engine XHP.
+          Open <code>{__FILE__}</code> if you are interested in how it works.
+        </p>
       </div>
 
       <hr class="col-3 col-md-2 mb-5" />
@@ -104,6 +109,24 @@ async function render(): Awaitable<void> {
                 docker exec -it hack-laba bash -c "cd /var/www && php /opt/composer/composer.phar require  hhvm/hsl hhvm/hhvm-autoload"
               </code> and press "y" when it asks you.
               <br/><br/>
+
+              <div class="alert alert-primary" role="alert">
+                
+                <p>
+                  The autoloader obviously does what it is - automatically loads classes and namespaces for your convenience. 
+                  It can be included in any PHP project and it is also included in the Hack.
+                </p>
+
+                <p>
+                  The <code>hh_autoload.json</code> configuration file describes a directory whose contents will be automatically loaded by the autoloader.
+                  In our case this is the <strong>/src</strong> folder.
+                </p>
+
+                <p>
+                  Without this, you will need to explicitly include each file that is needed using function
+                  <code><a href="https://www.php.net/manual/en/function.require-once.php">require_once()</a></code>.
+                </p>
+              </div>
               
               <h6 class="card-title">How to run HHVM typechecker:</h6>
               <code>docker exec -it hack-laba bash -c "cd /var/www && hh_client"</code>
