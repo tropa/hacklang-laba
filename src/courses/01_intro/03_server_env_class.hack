@@ -84,25 +84,27 @@ echo <<<'EOD'
 
                             <div class="highlight fbgfm source-language-Hack">
                                 <pre>
-                                 <span class="php-comment">//The content of the request:</span>
-                                <code>
-                                    ?course=01_intro&class=03_server_env
-                                </code>
-                                   
-                                We have:
-                                - parameter "course" with value "01_intro"
-                                - parameter "class" with value "03_server_env"
+                                    <span class="php-comment">//The content of the request:</span>
+                                    <code>
+                                        ?course=01_intro&class=03_server_env
+                                    </code>
+                                    
+                                    We have:
+                                    - parameter "course" with value "01_intro"
+                                    - parameter "class" with value "03_server_env"
 
-                                This means that we send to the server two named parameters: course and class. Each of them has the value. On the server-side our web-app
-                                can grab these paremeters and take its values. In this example, we send the name of course and the name of class to make our application
-                                open it for us.
-
-                                To use the passed parameters, we need to pick them up.
-                                Both types of parameters can be found in the $_REQUEST variable
+                                    This means that we send to the server two named parameters: course and class. Each of them has the value. On the server-side our web-app
+                                    can grab these paremeters and take its values. In this example, we send the name of course and the name of class to make our application
+                                    open it for us.
+                                </pre>
                             </div>
 
                             <div class="highlight fbgfm source-language-Hack">
+                                
                                 <pre>
+                                To use the passed parameters, we need to pick them up.
+                                Both types of parameters can be found in the $_REQUEST variable
+                                
                                 \var_dump($_REQUEST);
                                 Output:
                                     <span class="php-comment">//Open the source code of the page. The dump of your variable is:</span>
