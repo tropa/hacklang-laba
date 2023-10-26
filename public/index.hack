@@ -15,6 +15,8 @@ async function main(): Awaitable<void> {
     $course = \strval($_REQUEST['course']) ?? '01_intro';
     $class = \strval($_REQUEST['class']) ?? null;
 
+
+
     $file =  __DIR__."/../src/courses/{$course}/{$class}_class.hack";
 
     if(\file_exists($file)){
