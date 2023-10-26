@@ -124,8 +124,8 @@ echo <<<'EOD'
                                     We see how much different information a typical request contains. Among other things we can find our parameters and their values.
                                     They are very easy to take:
 
-                                    $course = \strval($_REQUEST['course']);
-                                    $class = \strval($_REQUEST['class']);
+                                    $course = $_REQUEST['course'];
+                                    $class = $_REQUEST['class'];
 
                                     You can find an example of using it in our project in public/index.hack file.
                                 </pre>
