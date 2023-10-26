@@ -42,7 +42,7 @@ echo <<<'EOD'
                 It runs when you refresh the browser page and closes immediately after the browser displays the result of the script in the form of a web page.
             </div>
 
-            <h4>1. Dumping variables</h4>
+            <h4><span class="badge bg-secondary">1. Dumping variables</span></h4>
 
             <div class="card" >
                 <div class="card-body">
@@ -199,7 +199,7 @@ echo <<<'EOD'
             <br/>
             <br/>
 
-            <h4>2. Using logs</h4>
+            <h4><span class="badge bg-secondary">2. Using logs</span></h4>
 
             <div class="card" >
                 <div class="card-body">
@@ -286,7 +286,7 @@ echo <<<'EOD'
             <br/>
             <br/>
 
-            <h4>3. Using debugger (the most funniest way)</h4>
+            <h4><span class="badge bg-secondary">3. Using debugger</span> (the most funniest way)</h4>
 
             <div class="card" >
                 <div class="card-body">
