@@ -52,10 +52,10 @@ echo <<<END
                 <div class="accordion-body">
                   <ol class="icon-list">
                     <li>
-                      <a href="/?course=1_intro&class=01_install">Docker & project setup guide</a>
+                      <a href="/?course=01_intro&class=01_install">Docker & project setup guide</a>
                     </li>
                     <li>
-                      <a href="/?course=1_intro&class=02_debug">Debugging</a>
+                      <a href="/?course=01_intro&class=02_debug">Debugging</a>
                     </li> 
                     <li>
                       <a href="/?course=02_env">Server environment</a>
