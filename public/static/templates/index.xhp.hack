@@ -56,6 +56,9 @@ echo <<<END
                     </li>
                     <li>
                       <a href="/?course=1_intro&class=02_debug">Debugging</a>
+                    </li> 
+                    <li>
+                      <a href="/?course=02_env">Server environment</a>
                     </li>
                     
                   </ol>
@@ -67,23 +70,14 @@ echo <<<END
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingTwo">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                  Accordion Item #2
+                  Basic usage
                 </button>
               </h2>
               <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
                   <ol class="icon-list">
                     <li>
-                      <a href="/?course=01_intro">Docker & project setup guide</a>
-                    </li>
-                    <li>
-                      <a href="/?course=01_intro">Hack & HHVM</a>
-                    </li>
-                    <li>
-                      <a href="/?course=02_env">Server environment</a>
-                    </li>
-                    <li>
-                      <a href="/?course=03_yeld">Generators - why they are important</a>
+                      <a href="/?course=02_basic&class=01_expressions">Expressions And Operators</a>
                     </li>
                   </ol>
                 </div>
