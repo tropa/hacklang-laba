@@ -104,14 +104,15 @@ echo <<<'EOD'
                                 <pre>
                                 To use the passed parameters, we need to pick them up.
                                 Both types of parameters can be found in the $_REQUEST variable
-                                
-                                \var_dump($_REQUEST);
+
+                                <code>\var_dump($_REQUEST);</code>
+
                                 Output:
                                     <span class="php-comment">//Open the source code of the page. The dump of your variable is:</span>
                                         <span class="php-output">
                                             dict(13) { 
-                                                ["course"]=> string(8) "01_intro"
-                                                ["class"]=> string(13) "03_server_env" 
+                                                <strong>["course"]=> string(8) "01_intro"</strong>
+                                                <strong>["class"]=> string(13) "03_server_env"</strong>
                                                 ["_ga"]=> string(26) "GA1.1.618641160.1680027935" 
                                                 ["sa-user-id"]=> string(86) "s%3A0-711a3404-8f94-5642-67e3-474aa54f7d1f.EUFKHgM6XNlKGpz7os4zq6dxzqwE1E9kAGeVKV7YmPg" 
                                                 ["sa-user-id-v2"]=> string(81) "s%3AcRo0BI-UVkJn40dKpU99H5f55ms.JbViMr8r0ePdUEbWTFTBej8MY%2B7ZqRaWZ%2F8s1gsa%2Fw8" 
