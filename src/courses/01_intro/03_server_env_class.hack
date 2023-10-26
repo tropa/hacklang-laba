@@ -42,7 +42,8 @@ echo <<<'EOD'
                 Let's look at it with a couple of examples.
             </p>
 
-            <h4>1. Requests </h4>
+            <h4></h4>
+            <h4><span class="badge bg-secondary">1. Requests </span></h4>
 
             <div class="card" >
                 <div class="card-body">
@@ -155,14 +156,5 @@ echo <<<'EOD'
 
 EOD;
     
-    echo '<div class="row">
-            <div class="col-md-6">
-            <span class="badge bg-secondary">Hello 2</span>
-            </div></div>';
-
-    //Env\Environment::_SERVER();
-    //Env\Environment::_COOKIES();
-    //Env\Environment::_GET();
-    //Env\Environment::_POST();
-    //Env\Environment::_REQUEST();
+    
 }
