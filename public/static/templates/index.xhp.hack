@@ -34,6 +34,11 @@ echo <<<END
           <p>
             Quickly and easily get started with our examples and helpful links. 
           </p>
+
+          <pre>
+           - <a target="_blank" href="https://docs.hhvm.com/">Oficial HACK documentations</a>
+           - <a target="_blank" href="https://www.php.net/manual/en/">PHP manual</a>
+          </pre>
           
         </div>
 
@@ -58,11 +63,11 @@ echo <<<END
                       <a href="/?course=01_intro&class=02_debug">Debugging</a>
                     </li> 
                     <li>
-                      <a href="/?course=02_env">Server environment</a>
+                      <a href="/?course=01_intro&class=03_server_env">Server environment</a>
                     </li>
                     
                   </ol>
-                  This is the first section.
+                  The first section, where you will become familiar with web applications and learn how to launch a training project.
                 </div>
               </div>
             </div>
@@ -79,7 +84,20 @@ echo <<<END
                     <li>
                       <a href="/?course=02_basic&class=01_expressions">Expressions And Operators</a>
                     </li>
+                     <li>
+                      <a href="/?course=02_basic&class=02_statements">Statements</a>
+                    </li>
+                    <li>
+                      <a href="/?course=02_basic&class=03_functions">Functions</a>
+                    </li>
+                    <li>
+                      <a href="/?course=02_basic&class=04_primitives">Built In Types (primitives)</a>
+                    </li>
+                    <li>
+                      <a href="/?course=02_basic&class=05_attributes">Attributes</a>
+                    </li>
                   </ol>
+                  Basic language constructs.
                 </div>
               </div>
             </div>
@@ -91,21 +109,72 @@ echo <<<END
                 </button>
               </h2>
               <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                <div class="accordion-body">
+                  <ol class="icon-list">
+                    <li>
+                      <a href="/?course=03_oop&class=01_classes">Classes</a>
+                    </li>
+                    <li>
+                      <a href="/?course=03_oop&class=02_traits_and_interfaces">Traits And Interfaces</a>
+                    </li>
+                    <li>
+                      <a href="/?course=03_oop&class=03_builtin_types">Built In Types</a>
+                    </li>
+                  </ol>
+                </div>
               </div>
             </div>
 
             <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingThree">
+              <h2 class="accordion-header" id="flush-headingFour">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseThree">
-                  Loops
+                  Collections and generic
                 </button>
               </h2>
               <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
+                  
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                  Asynchronous Operations
+                </button>
+              </h2>
+              <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
                   <ol class="icon-list">
                     <li>
-                      <a href="/?course=03_yeld">Generators - why they are important</a>
+                      <a href="/?course=05_async&class=01_intro">Introduction to async</a>
+                    </li>
+                    <li>
+                      <a href="/?course=05_async&class=02_await">Awaitables</a>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                  Advanced usages
+                </button>
+              </h2>
+              <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                  <ol class="icon-list">
+                    <li>
+                      <a href="/?course=06_advanced&class=02_readonly">Readonly</a>
+                    </li>
+                    <li>
+                      <a href="/?course=06_advanced&class=03_modules">Modules</a>
+                    </li>
+                    <li>
+                      <a href="/?course=06_advanced&class=04_xhp">XHP</a>
                     </li>
                   </ol>
                 </div>

@@ -184,9 +184,10 @@ echo <<<'EOD'
                             <p>
                                 This debugging method is very convenient and often used. Feel free to use var dump in any way, it is designed to make your life easier.
                             </p>
-                            <p>
+
+                            <div class="alert alert-dark" role="alert">
                                 Check out the <a href="https://www.php.net/manual/en/function.var-dump">PHP documentation</a> for more information.
-                            </p>
+                            </div>
 
                         </div>
 
