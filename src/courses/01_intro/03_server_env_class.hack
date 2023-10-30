@@ -314,7 +314,7 @@ echo <<<'EOD'
                                             }   
                                         </span>
                                     </span>
-                                    Pay attention to the highlighted parameters - these are our argv and argc. 
+                                    Pay attention to the highlighted parameters - these are our <code>argv</code> and <code>argc</code>. 
                                     If you call a script without parameters, then <code>argc</code> is equal to 1, since the script always receives at least one parameter - the path to itself.
                                     This is clearly visible in argv - it contains the line "/var/www/src/courses/01_intro/examples/cli_example.hack" - the full path to the script.
                                     Everything looks and works completely similar to C or Java, except for the place where we can find these parameters.
@@ -340,6 +340,18 @@ echo <<<'EOD'
                                 </pre>
                             </div>
 
+                            <p>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                    Useful links
+                                </button>
+                            </p>
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-body">
+                                    <a href="https://code.tutsplus.com/get-command-line-arguments-with-php-argv-or-getopt--cms-39201t">Get Command-Line Arguments With PHP $argv or getopt()</a>
+
+                                </div>
+                            </div>
+                            
                         
                 </div>
             </div>
