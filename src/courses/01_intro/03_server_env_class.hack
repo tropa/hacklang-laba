@@ -250,8 +250,8 @@ echo <<<'EOD'
                         </pre>
 
                         <p>
-                            Unlike C or Java, script parameters such as argv and argts are not passed to the main function. 
-                            The hack, like PHP, uses a slightly different approach that is already familiar to you - 
+                            Unlike C or Java, script parameters such as argv and argc are not passed to the main function. 
+                            Hack, like PHP, uses a slightly different approach that is already familiar to you - 
                             passing parameters through environment variable - <strong>$_SERVER</strong>
                         </p>
 
@@ -268,56 +268,55 @@ echo <<<'EOD'
                                     The result of his work will be as follows:
 
                                 Output:
-                                    <span class="php-comment">//Open the source code of the page. The dump of your variable is:</span>
-                                        <span class="php-output">
-                                            dict(19) {
-                                                ["PATH"]=>
-                                                string(60) "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-                                                ["HOSTNAME"]=>
-                                                string(12) "ecb03ee3bd59"
-                                                ["TERM"]=>
-                                                string(5) "xterm"
-                                                ["HHVM_DISABLE_NUMA"]=>
-                                                string(4) "true"
-                                                ["HHVM_DISABLE_PERSONALITY"]=>
-                                                string(4) "true"
-                                                ["HOME"]=>
-                                                string(5) "/root"
-                                                ["GLIBCPP_FORCE_NEW"]=>
-                                                string(1) "1"
-                                                ["GLIBCXX_FORCE_NEW"]=>
-                                                string(1) "1"
-                                                ["UNW_RBP_ALWAYS_VALID"]=>
-                                                string(1) "1"
-                                                ["REQUEST_START_TIME"]=>
-                                                int(1698679441)
-                                                ["REQUEST_TIME"]=>
-                                                int(1698679441)
-                                                ["REQUEST_TIME_FLOAT"]=>
-                                                float(1698679441.3203)
-                                                ["DOCUMENT_ROOT"]=>
-                                                string(0) ""
-                                                ["SCRIPT_FILENAME"]=>
+                                    <span class="php-output">
+                                        dict(19) {
+                                            ["PATH"]=>
+                                            string(60) "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+                                            ["HOSTNAME"]=>
+                                            string(12) "ecb03ee3bd59"
+                                            ["TERM"]=>
+                                            string(5) "xterm"
+                                            ["HHVM_DISABLE_NUMA"]=>
+                                            string(4) "true"
+                                            ["HHVM_DISABLE_PERSONALITY"]=>
+                                            string(4) "true"
+                                            ["HOME"]=>
+                                            string(5) "/root"
+                                            ["GLIBCPP_FORCE_NEW"]=>
+                                            string(1) "1"
+                                            ["GLIBCXX_FORCE_NEW"]=>
+                                            string(1) "1"
+                                            ["UNW_RBP_ALWAYS_VALID"]=>
+                                            string(1) "1"
+                                            ["REQUEST_START_TIME"]=>
+                                            int(1698679441)
+                                            ["REQUEST_TIME"]=>
+                                            int(1698679441)
+                                            ["REQUEST_TIME_FLOAT"]=>
+                                            float(1698679441.3203)
+                                            ["DOCUMENT_ROOT"]=>
+                                            string(0) ""
+                                            ["SCRIPT_FILENAME"]=>
+                                            string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
+                                            ["SCRIPT_NAME"]=>
+                                            string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
+                                            ["PHP_SELF"]=>
+                                            string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
+                                    <strong>["argv"]=>
+                                            vec(1) {
                                                 string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
-                                                ["SCRIPT_NAME"]=>
-                                                string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
-                                                ["PHP_SELF"]=>
-                                                string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
-                                        <strong>["argv"]=>
-                                                vec(1) {
-                                                    string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
-                                                }</strong>
-                                        <strong>["argc"]=>
-                                                int(1)</strong>
-                                                ["PWD"]=>
-                                                string(1) "/"
-                                            }   
-                                        </span>
+                                            }</strong>
+                                    <strong>["argc"]=>
+                                            int(1)</strong>
+                                            ["PWD"]=>
+                                            string(1) "/"
+                                        }   
                                     </span>
                                     Pay attention to the highlighted parameters - these are our <code>argv</code> and <code>argc</code>. 
                                     If you call a script without parameters, then <code>argc</code> is equal to 1, since the script always receives at least one parameter - the path to itself.
                                     This is clearly visible in argv - it contains the line "/var/www/src/courses/01_intro/examples/cli_example.hack" - the full path to the script.
-                                    Everything looks and works completely similar to C or Java, except for the place where we can find these parameters.
+                                    Everything looks and works completely similar to C or Java, except for the place where we can find these parameters. 
+                                    (PHP is written in C and is itself a C-like language, and Hack is derived from PHP).
 
                                     Now if you run our script with a parameter, you will see it in the results:
 
@@ -347,7 +346,7 @@ echo <<<'EOD'
                             </p>
                             <div class="collapse" id="collapseExample">
                                 <div class="card card-body">
-                                    <a href="https://code.tutsplus.com/get-command-line-arguments-with-php-argv-or-getopt--cms-39201t">Get Command-Line Arguments With PHP $argv or getopt()</a>
+                                    <a traget="_blank" href="https://code.tutsplus.com/get-command-line-arguments-with-php-argv-or-getopt--cms-39201t">Get Command-Line Arguments With PHP $argv or getopt()</a>
 
                                 </div>
                             </div>
