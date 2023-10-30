@@ -56,17 +56,17 @@ echo <<<'EOD'
                             In general, the client and server are determined by the current function, and not by the device or type of equipment.
                             The one who requests the data is the client, the one who receives and processes the request is the server.
                         </p>
-                        When you request a resource via a link, for example, <code>https://google.com</code>
+                        When you request a resource via a link, for example, <code>https://google.com</code>,
                         the browser sends a <strong>request</strong> somewhere to the Internet, in which it asks to connect it to the google.com server.
                         At the same time as a request to connect to the specified address, the request may contain a bunch of additional information.
-                        Among other things, you should be aware that a request can be used to transfer some information from you to a web application
+                        Among other things, you should be aware that request can be used to transfer some information from you to a web application
 
                         <div class="innerContent">
                             <div class="highlight fbgfm source-language-Hack">
                                 
                                 <pre>
                                     <strong>Request</strong> has its own format and may be of several types, the most typical are GET and POST ones.
-                                    In this example we see a GET request. 
+                                    In this example we can see a GET request. 
                                     A GET request looks like incomprehensible text in the browser's address bar, but it is designed extremely simply.
 
                                     For example:
@@ -74,18 +74,19 @@ echo <<<'EOD'
                                         http://localhost/?course=01_intro&class=03_server_env
                                     </code>
                                     This URL will cause a <strong>request</strong> from YOUR browser to the REMOTE server. 
-                                    The request consists of several pathes.
+                                    The request consists of several things.
 
                                     http://localhost is it's address. 
 
-                                    <strong>?</strong> in URL indicates the end of address and the beginning of the params.
+                                    <strong>?</strong> in URL indicates the end of address and the beginning of the params. 
+                                    The parameters and their values are the content of the request.
                                 </pre>
 
                             </div>
 
                             <div class="highlight fbgfm source-language-Hack">
                                 <pre>
-                                    <span class="php-comment">//The content of the request:</span>
+                                    <span class="php-comment">//The content of our request:</span>
                                     <code>
                                         ?course=01_intro&class=03_server_env
                                     </code>
@@ -103,8 +104,8 @@ echo <<<'EOD'
                             <div class="highlight fbgfm source-language-Hack">
                                 
                                 <pre>
-                                To use the passed parameters, we need to pick them up.
-                                Both types of parameters can be found in the $_REQUEST variable
+                                To use the passed parameters, we need to pick them up somewhere in web app. 
+                                In Hack (as well as in PHP) parameters can be found in the <strong><a href="https://www.php.net/manual/en/reserved.variables.request">$_REQUEST</a></strong> variable
 
                                 <code>\var_dump($_REQUEST);</code>
 
@@ -127,6 +128,7 @@ echo <<<'EOD'
                                                 ["visitor_id788423-hash"]=> string(104) "4a240b360b8141a7f03c22ad78e95d20e2e90aa69359245b4511038e33841b7d880fce897676c3b5ed0cd161f38fc113a8d3c05e" 
                                                 }
                                         </span>
+                                    </span>
                                     We see how much different information a typical request contains. Among other things we can find our parameters and their values.
                                     They are very easy to take:
 
@@ -136,15 +138,209 @@ echo <<<'EOD'
                                     You can find an example of using it in our project in public/index.hack file.
                                 </pre>
                             </div>
-                           
+
                         </div>
 
-                        
+                        <hr/>
+
+                        <p>
+                            The next interesting and useful environment variable is 
+                            <strong><a href="https://www.php.net/manual/en/reserved.variables.server.php">$_SERVER</a>.</strong> 
+                        </p>
+                        <p>
+                            $_SERVER is a super global variable which holds information about headers, paths, and script locations.
+                        </p>
+
+                        <p>
+                            Look at them just for your information. It is not known whether you will need them, but you need to know about them.
+                        </p>
+
+                        <div class="highlight fbgfm source-language-Hack">
+                             <pre>
+                                echo $_SERVER['PHP_SELF']; // /index.hack
+                                
+                                echo $_SERVER['SERVER_NAME']; // localhost
+                                
+                                echo $_SERVER['HTTP_HOST']; // localhost
+                               
+                                echo $_SERVER['HTTP_REFERER']; // http://localhost/
+                                
+                                echo $_SERVER['HTTP_USER_AGENT']; // Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36
+                                
+                                echo $_SERVER['SCRIPT_NAME']; // /index.hack
+                             </pre>
+                        </div>
+
 
                         
 
                     </div>
 
+                    
+
+                </div>
+            </div>
+
+            <br/>
+            <h4><span class="badge bg-secondary">2. Running </span></h4>
+            <div class="card" >
+                <div class="card-body">
+                    <p>
+                            If you will be running the script from the command line rather than via a web server request, 
+                            you will need the $argc and $argv parameters within your script:
+                        </p>
+
+                        <pre>
+                            $argv - Array of arguments passed to script.
+                            $argc - The number of arguments passed to script.
+
+                            Both have the same sense as in C, C++ or Java.
+                        </pre>
+
+                        <div class="alert alert-warning" role="alert">
+                            An important thing to understand how web applications and scripts work!
+                        </div>
+
+                        
+
+                        <p>
+                            Some clarifications should be given here.
+                        </p>
+                        <p>
+                            In order to execute a single script, you need to transfer the full path to it to the hhvm virtual machine.
+                            This mode is called CLI - command line interface.
+                            If you want to open this file in the browser by sending the server a request like 
+                            <p><code>http://localhost/cli_example.hack</code></p> 
+                            <p>or</p> 
+                            <p><code>http://localhost/examples/cli_example.hack</code></p>
+                             or somehow else you will fail.
+                        </p>
+                        <p>
+                            The web application works in such a way that you and your browser do not have access to application files over the Internet. 
+                            You can only ask the web server through a request to launch the application. 
+                            The server cannot execute arbitrary files; it is only allowed to execute one file, which is the entry point. 
+                            In our case this is the file <code>public/index.hack</code>. 
+                            This file is specified in the server configuration as the entry point.
+                            No other file can be executed by the server at your request.
+                        </p>
+                        <p>
+                            Please note that the server may transfer some files to the browser unchanged. Such files are called static. 
+                            They are not scripts and do not execute program code, even if it is there. 
+                            The server simply takes them and sends them as a string of bytes to your browser, 
+                            telling you what type of file it sent so that the browser knows what to do with it - display it, play it, or save it to disk.
+                        </p>
+                        <p>
+                            The folder in which static files can be located (including other folders with files) is also specified in the server configuration. 
+                            Static files most often include image and style files.
+                        </p>
+
+                        <p>
+                            Returning to the beginning, we realized that we can execute a specific script in CLI mode, 
+                            or execute the entire web application using a web request  - &nbsp; <code>(and this request does not always come from the browser)</code>.
+                        </p>
+
+                        <p>
+                            
+                            
+                        </p>
+                        <pre>
+                            Now run the script with the following command in your terminal:
+
+                            <code>docker exec -it hack-laba hhvm /var/www/src/courses/01_intro/examples/cli_example.hack</code>
+                        </pre>
+
+                        <p>
+                            Unlike C or Java, script parameters such as argv and argts are not passed to the main function. 
+                            The hack, like PHP, uses a slightly different approach that is already familiar to you - 
+                            passing parameters through environment variable - <strong>$_SERVER</strong>
+                        </p>
+
+                        <div class="highlight fbgfm source-language-Hack">
+                                
+                                <pre>
+                                    Our script contains one function:
+                                    <code>
+                                    <<__EntryPoint>>
+                                    function main() {
+                                        &nbsp;&nbsp;&nbsp;var_dump($_SERVER);
+                                    }
+                                    </code>
+                                    The result of his work will be as follows:
+
+                                Output:
+                                    <span class="php-comment">//Open the source code of the page. The dump of your variable is:</span>
+                                        <span class="php-output">
+                                            dict(19) {
+                                                ["PATH"]=>
+                                                string(60) "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+                                                ["HOSTNAME"]=>
+                                                string(12) "ecb03ee3bd59"
+                                                ["TERM"]=>
+                                                string(5) "xterm"
+                                                ["HHVM_DISABLE_NUMA"]=>
+                                                string(4) "true"
+                                                ["HHVM_DISABLE_PERSONALITY"]=>
+                                                string(4) "true"
+                                                ["HOME"]=>
+                                                string(5) "/root"
+                                                ["GLIBCPP_FORCE_NEW"]=>
+                                                string(1) "1"
+                                                ["GLIBCXX_FORCE_NEW"]=>
+                                                string(1) "1"
+                                                ["UNW_RBP_ALWAYS_VALID"]=>
+                                                string(1) "1"
+                                                ["REQUEST_START_TIME"]=>
+                                                int(1698679441)
+                                                ["REQUEST_TIME"]=>
+                                                int(1698679441)
+                                                ["REQUEST_TIME_FLOAT"]=>
+                                                float(1698679441.3203)
+                                                ["DOCUMENT_ROOT"]=>
+                                                string(0) ""
+                                                ["SCRIPT_FILENAME"]=>
+                                                string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
+                                                ["SCRIPT_NAME"]=>
+                                                string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
+                                                ["PHP_SELF"]=>
+                                                string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
+                                        <strong>["argv"]=>
+                                                vec(1) {
+                                                    string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
+                                                }</strong>
+                                        <strong>["argc"]=>
+                                                int(1)</strong>
+                                                ["PWD"]=>
+                                                string(1) "/"
+                                            }   
+                                        </span>
+                                    </span>
+                                    Pay attention to the highlighted parameters - these are our argv and argc. 
+                                    If you call a script without parameters, then <code>argc</code> is equal to 1, since the script always receives at least one parameter - the path to itself.
+                                    This is clearly visible in argv - it contains the line "/var/www/src/courses/01_intro/examples/cli_example.hack" - the full path to the script.
+                                    Everything looks and works completely similar to C or Java, except for the place where we can find these parameters.
+
+                                    Now if you run our script with a parameter, you will see it in the results:
+
+                                    <code>docker exec -it hack-laba hhvm /var/www/src/courses/01_intro/examples/cli_example.hack 'Hello, world'</code>
+                                    <span class="php-output">
+                                        dict(19) {
+                                            ...
+                                    <strong>["argv"]=>
+                                            vec(2) {
+                                                string(55) "/var/www/src/courses/01_intro/examples/cli_example.hack"
+                                                string(12) "Hello, world"
+                                            }</strong>
+                                    <strong>["argc"]=>
+                                            int(2)</strong>
+                                            ["PWD"]=>
+                                            string(1) "/"
+                                        }   
+                                    </span>
+                                    We need <code>argc</code> as the size of the array of passed parameters. However, in Hack and PHP we have the opportunity to iterate over an array without knowing its actual size.
+                                </pre>
+                            </div>
+
+                        
                 </div>
             </div>
 
@@ -155,6 +351,6 @@ echo <<<'EOD'
     </div>
 
 EOD;
-    
+
     
 }
