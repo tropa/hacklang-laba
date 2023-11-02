@@ -1,7 +1,7 @@
 namespace Courses;
 
 use type Facebook\XHP\HTML\{a, strong, body, head, html, div, header, span, main, p, hr, ol, li, br, button, code};
-use type Facebook\XHP\HTML\{h1, h2, h3, h4, h5, h6};
+use type Facebook\XHP\HTML\{h1, h2, h3, h4, h5, h6, svg};
 
 
 
@@ -18,8 +18,12 @@ async function render(): Awaitable<void> {
 
     <main>
       <h1>Intro</h1>
+
+      <a href="/" type="button" class="btn btn-outline-secondary">
+          Back
+      </a>
       <p class="fs-5 col-md-8">
-        Bla bla bla
+        
       </p>
 
       <div class="mb-5">
