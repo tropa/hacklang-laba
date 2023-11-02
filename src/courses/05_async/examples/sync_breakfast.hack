@@ -55,7 +55,7 @@ function ToastBread(num $slices): Toast
         echo("Putting a slice of bread in the toaster  \r\n");
     }
     echo("Start toasting... \r\n");
-    \sleep(10);
+    \sleep(30);
     echo("Remove toast from toaster  \r\n");
 
     return new Toast();
