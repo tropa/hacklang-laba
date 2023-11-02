@@ -58,9 +58,9 @@ async function ToastBreadAsync(num $slices): Awaitable<Toast>
     {
         echo("Putting a slice of bread in the toaster  \r\n");
     }
-    echo("Start toasting... \r\n");
-    await \HH\Asio\usleep(3000);
-    echo("Remove toast from toaster  \r\n");
+    echo("START TOASTING... \r\n");
+    await \HH\Asio\usleep(30000000);
+    echo("REMOVE TOAST FROM TOASTER  \r\n");
 
     return new Toast();
 }
@@ -69,13 +69,13 @@ async function FryBaconAsync(int $slices): Awaitable<Bacon>
 {
     echo("putting {$slices} slices of bacon in the pan  \r\n");
     echo("cooking first side of bacon... \r\n");
-    await \HH\Asio\usleep(3000);
+    await \HH\Asio\usleep(3000000);
     for ($slice = 0; $slice < $slices; $slice++)
     {
         echo("flipping a slice of bacon  \r\n");
     }
     echo("cooking the second side of bacon...  \r\n");
-    await \HH\Asio\usleep(3000);
+    await \HH\Asio\usleep(3000000);
     echo("Put bacon on plate \r\n");
 
     return new Bacon();
@@ -84,10 +84,10 @@ async function FryBaconAsync(int $slices): Awaitable<Bacon>
 async function FryEggsAsync(num $howMany): Awaitable<Egg>
 {
     echo("Warming the egg pan... \r\n");
-    await \HH\Asio\usleep(3000);
+    await \HH\Asio\usleep(3000000);
     echo("cracking {$howMany} eggs  \r\n");
     echo("cooking the eggs ... \r\n");
-    await \HH\Asio\usleep(3000);
+    await \HH\Asio\usleep(3000000);
     echo("Put eggs on plate  \r\n");
 
     return new Egg();

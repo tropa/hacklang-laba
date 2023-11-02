@@ -118,8 +118,11 @@ echo <<<'EOD'
                         </p>
 
                     
-                        <div class="shadow-lg p-3 mb-5 bg-body rounded">
+                        <div class="shadow-lg p-3 mb-5 bg-body rounded"> 
                             <p class="text-center" style="margin-bottom:0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-exclamation-lg" viewBox="0 0 16 16">
+                                    <path d="M7.005 3.1a1 1 0 1 1 1.99 0l-.388 6.35a.61.61 0 0 1-1.214 0L7.005 3.1ZM7 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"/>
+                                </svg>
                                 Async is not multithreading
                             </p>
                         </div>
@@ -220,8 +223,8 @@ echo <<<'EOD'
                                     toast is ready  
                                     Pouring orange juice 
                                     oj is ready  
-                                    Breakfast is ready!
-                                    Total time taken: 22.031711578369 seconds 
+                                    Breakfast is ready!  
+                                    Total time taken: 15.03147983551 seconds
                                 </span>
 
                                 Look at the script code. The action program is described in the constructor function.
@@ -248,7 +251,7 @@ echo <<<'EOD'
                         </p>
 
                         <p>
-                            The synchronously prepared breakfast took roughly 30 minutes because the total is the sum of each task.
+                            The synchronously prepared breakfast took roughly 15 sec because the total is the sum of each task (each sleep(3)  - count them and make sure, 15 sec in sum).
                         </p>
                         <p>
                             Computers don't interpret those instructions the same way people do. 
@@ -262,6 +265,9 @@ echo <<<'EOD'
                         </p>
                         
                         <div class="alert alert-primary" role="alert">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sun" viewBox="0 0 16 16">
+                            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                            </svg>
                             Don't block, await instead
                         </div>
 
@@ -278,7 +284,7 @@ echo <<<'EOD'
                             <p> - <code>async</code> function task(): <code>Awaitable&lt;void&gt;</code> definition </p>
                             <p> - <code>await</code> keyword</p>
                         </p>
-                        
+                        <br/>
 
                         <div class="highlight fbgfm source-language-Hack">
                             
@@ -296,16 +302,16 @@ echo <<<'EOD'
                                     cooking first side of bacon... 
                                     Putting a slice of bread in the toaster  
                                     Putting a slice of bread in the toaster  
-                                    Start toasting... 
-                                    Remove toast from toaster  
+                                    START TOASTING... 
+                                    cracking 2 eggs  
+                                    cooking the eggs ... 
                                     flipping a slice of bacon  
                                     flipping a slice of bacon  
                                     flipping a slice of bacon  
                                     cooking the second side of bacon...  
-                                    cracking 2 eggs  
-                                    cooking the eggs ... 
-                                    Put bacon on plate 
+                                    REMOVE TOAST FROM TOASTER  
                                     Put eggs on plate  
+                                    Put bacon on plate 
                                     coffee is ready  
                                     eggs are ready  
                                     bacon is ready  
@@ -315,7 +321,7 @@ echo <<<'EOD'
                                     Pouring orange juice 
                                     oj is ready  
                                     Breakfast is ready!  
-                                    Total time taken: 0.057324886322021 seconds
+                                    Total time taken: 6.0249834060669 seconds
                                 </span>
                             </pre>
                         </div>
@@ -326,19 +332,52 @@ echo <<<'EOD'
 
                         
                         <p>
-                            Sequential (synchronous) execution - 22 seconds.
+                            Sequential (synchronous) execution - 15 seconds.
                             
                         </p>
                         <p>
-                            Asynchronous execution - 0.05 seconds
+                            Asynchronous execution - 6 seconds
                         </p>
+
+                        
                         
                         <div class="shadow-lg p-3 mb-5 bg-body rounded">
                             <p class="text-center" style="margin-bottom:0">
-                                Looks like it was worth it, right? :)
+                                Looks like it was worth it, right? :) 3x faster!
                             </p>
                         </div>
-                    
+
+                        <span class="badge bg-secondary">So new features are:</span>
+                        <ul>
+                            <li>
+                                <code>usleep()</code> function
+                            </li>
+                            <li>
+                                <code>async</code> and <code>Awaitable</code> keywords
+                            </li>
+                            <li>
+                                <code>await</code> keyword
+                            </li>
+                        </ul>
+                        <p>
+                            - <code>usleep()</code> function is an inbuilt ASYNC alternative of sleep() function which is used to delay 
+                            the execution of the current script for a specified number of <strong>micro</strong>seconds (<code>sleep()</code> takes <strong>seconds</strong>).
+                        </p>
+                        <p>
+                            - <code>async</code> function task(): <code>Awaitable&lt;void&gt;</code> - 
+                            Unusual function definition. It's actually quite common, we're just telling the computer that the function should be executed in an asynchronous manner
+                             and that the return type is awaitable something - in  this case void type (we can wait for void from the function).
+                        </p>
+                        <p>
+                            - <code>await</code> keyword expresses our desire to wait. We <strong>await</strong> the awaitable until the operation has completed. We say here what exactely we want to wait.
+                        </p>  
+
+                        <p class="text-center" style="margin-bottom:0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+                            </svg>
+                        </p>
+                        
                     </div>
                 </div>
             </div>
@@ -349,20 +388,116 @@ echo <<<'EOD'
             <div class="card" >
                 <div class="card-body">
                     <div class="alert alert-light" role="alert">
+                        <p>
+                            To easily and naturally make sure that your vision is not deceiving you, open the file with the code for the asynchronous breakfast procedure and increase the toasting time, for example.
+                        </p>
+                        
+                        <div class="highlight fbgfm source-language-Hack">
+                            
+                            
+                            <pre>
+                                Run the script with following command:
+
+                                <code>docker exec -it hack-laba hhvm /var/www/src/courses/05_async/examples/async_breakfast.hack</code>
+                            
+                            Look at this function:
+
+                            &nbsp;async function ToastBreadAsync(num $slices): Awaitable<Toast>
+&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;for ($slice = 0; $slice < $slices; $slice++)
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo("Putting a slice of bread in the toaster  \r\n");
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;echo("Start toasting... \r\n");
+&nbsp;&nbsp;&nbsp;&nbsp;await \HH\Asio\usleep(3000000);
+&nbsp;&nbsp;&nbsp;&nbsp;echo("Remove toast from toaster  \r\n");
+
+&nbsp;&nbsp;&nbsp;&nbsp;return new Toast();
+&nbsp;}
+
+                                We have <code>await \HH\Asio\usleep(3000000);</code> string. This command means that we are waiting for 3000000 microseconds (3 seconds).
+                                Let's imagine that our slices of our bread are much thicker. Of course, it will take us noticeably more time to fry it.
+
+                                Let's change our function as follows:
+
+                                &nbsp;async function ToastBreadAsync(num $slices): Awaitable<Toast>
+&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;for ($slice = 0; $slice < $slices; $slice++)
+&nbsp;&nbsp;&nbsp;&nbsp;{
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo("Putting a slice of bread in the toaster  \r\n");
+&nbsp;&nbsp;&nbsp;&nbsp;}
+&nbsp;&nbsp;&nbsp;&nbsp;echo("Start toasting... \r\n");
+&nbsp;&nbsp;&nbsp;&nbsp;await \HH\Asio\usleep(<strong>30000000</strong>);
+&nbsp;&nbsp;&nbsp;&nbsp;echo("Remove toast from toaster  \r\n");
+
+&nbsp;&nbsp;&nbsp;&nbsp;return new Toast();
+&nbsp;}
+
+                            And let's launch our program:
+                            <code>docker exec -it hack-laba hhvm /var/www/src/courses/05_async/examples/async_breakfast.hack</code>
+
+                            <span class="php-output">
+                                    Pouring coffee 
+                                    Warming the egg pan... 
+                                    putting 3 slices of bacon in the pan  
+                                    cooking first side of bacon... 
+                                    Putting a slice of bread in the toaster  
+                                    Putting a slice of bread in the toaster  
+                                    <strong>START TOASTING...</strong>
+                                    cracking 2 eggs  
+                                    cooking the eggs ... 
+                                    flipping a slice of bacon  
+                                    flipping a slice of bacon  
+                                    flipping a slice of bacon  
+                                    cooking the second side of bacon...  
+                                    Put eggs on plate  
+                                    Put bacon on plate 
+                                    <strong>REMOVE TOAST FROM TOASTER</strong>
+                                    coffee is ready  
+                                    eggs are ready  
+                                    bacon is ready  
+                                    Putting butter on the toast  
+                                    Putting jam on the toast 
+                                    toast is ready  
+                                    Pouring orange juice 
+                                    oj is ready  
+                                    Breakfast is ready!  
+                                    Total time taken: 30.031078338623 seconds
+                                </span>
+                            </pre>
+
+                            
+                        </div>
 
                         <p>
-                            The <code>usleep()</code> function is an inbuilt ASYNC alternative of sleep() function which is used to delay 
-                            the execution of the current script for a specified number of <strong>micro</strong>seconds (<code>sleep()</code> takes <strong>seconds</strong>).
+                            Compare the results. We lengthened the time for frying bread by 10 times and obviously affected the overall execution time, but this example is needed to show how the order of actions changes.
+                            We, as before, started frying the bread after cutting it
+                            Putting a slice of bread in the toaster  
+                            START TOASTING... 
                         </p>
                         <p>
-                            <code>async</code> function task(): <code>Awaitable&lt;void&gt;</code> - 
-                            Unusual function definition. It's actually quite common, we're just telling the computer that the function should be executed in an asynchronous manner
-                             and that the return type is awaitable something - in  this case void type (we can wait for void from the function).
+                            However, the second time, due to the fact that the frying time increased significantly, we took out the bread much later,
+                             only after "Put bacon on plate" message, whereas last time we took it out much earlier. 
                         </p>
-                        <p>
-                            <code>await</code> keyword expresses our desire to wait. We <strong>await</strong> the awaitable until the operation has completed. We say here what exactely we want to wait.
-                        </p>    
 
+                        <p>
+                            For the purity of the experiment, let us increase the frying time of the bread in our synchronous breakfast to the same value: 
+                            <p>set <code>\sleep(30);</code> in ToastBread function of sync_breakfast.hack file</p>
+
+                            <p>
+                                It will be easy to see that the total execution time has not changed and is still the arithmetic sum of the durations of each operation - 42sec.
+                            </p>
+
+                            <p>
+                                
+                        </p>
+
+                        <div class="shadow-lg p-3 mb-5 bg-body rounded">
+                            <p class="text-center" style="margin-bottom:0; font-size:22px">
+                                Do you still remember that asynchronous code with the same time intervals gave a total of 30 seconds?
+                            </p>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
