@@ -9,11 +9,47 @@ async function render(): Awaitable<void> {
 
     // type_enforcement();
 
-    format_strings_examaple();
+    // format_strings_examaple();
+
+    inout_example();
 
     
     echo "<br/><h1>End of file execution</h1><br/>";
 }
+
+function inout_example(){
+
+    echo "<br/>Format Strings example>>>>><br/>";
+    $num = 0;
+    takes__not_inout($num);
+    echo("<br> num is ".$num); // $num is now 0 but intro function 1.
+
+    takes_inout(inout $num);
+    echo("<br> num is ".$num); // $num is now 1.
+
+    try{
+        takes_inout($num); // Courses\takes_inout() expects parameter 1 to be inout, but the call was not annotated with 'inout'
+    } catch (\Exception $e) {
+        echo "catch block for takes_inout";
+        echo("<br/>".$e->getMessage()."<br/>");
+    }
+
+
+    echo "<br/>>>>>>End of Format Strings<br/>";
+}
+
+function takes__not_inout(int $x): void {
+    $x = 1;
+    echo("<br> x intro function takes__not_inout is ".$x);
+}
+
+function takes_inout(inout int $x): void {
+    $x = 1;
+    echo("<br> x intro function is takes_inout ".$x);
+}
+
+
+
 
 function  format_strings_examaple(){
     echo "<br/>Format Strings example>>>>><br/>";
