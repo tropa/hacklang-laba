@@ -42,6 +42,8 @@ function pipe_example(){
         |> \HH\Lib\Vec\sort($$); 
     \var_dump($pipe);
 
+    
+
     echo "<br/>>>>>>End of Coalesce example<br/>";
 }
 
