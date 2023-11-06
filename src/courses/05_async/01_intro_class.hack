@@ -496,8 +496,11 @@ echo <<<'EOD'
                             <p class="text-center" style="margin-bottom:0; font-size:22px">
                                 Do you still remember that asynchronous code with the same time intervals gave a total of 30 seconds?
                             </p>
-                            </p>
                         </div>
+
+                        <p>
+                            But still remember that the main goal of asynchrony is not so much to speed up the code as to eliminate blocking when the interface does not respond to user actions. This is what we call a bad experience and this is what we should strive to eliminate.
+                        </p>
                     </div>
                 </div>
             </div>
