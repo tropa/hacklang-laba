@@ -7,11 +7,40 @@ async function render(): Awaitable<void> {
 
     // anonymous_example();
 
-    type_enforcement();
+    // type_enforcement();
+
+    format_strings_examaple();
 
     
     echo "<br/><h1>End of file execution</h1><br/>";
 }
+
+function  format_strings_examaple(){
+    echo "<br/>Format Strings example>>>>><br/>";
+
+    // this is not works. Be carefylly with namespases
+    // Str\format("First: %d, second: %s", 1, "foo");
+
+    //works fine
+    echo(\HH\Lib\Str\format("First: %d, second: %s", 1, "foo"));
+    echo("<br>");
+
+    //works fine as well (cast paramt)
+    echo(\HH\Lib\Str\format("First: %d, second: %s", "33", 112));
+
+    //runtime error
+    // echo(\HH\Lib\Str\format("First: %d, second: %s", 1));
+
+    echo "<br/>>>>>>End of Format Strings<br/>";
+}
+
+function takes_format_string(
+        \HH\FormatString<\PlainSprintf> $format,
+        mixed ...$args
+    ): void {
+        echo(\HH\Lib\Str\format($format, $args[0], $args[1]));
+    }
+
 
 function function_example(int $x = 10, int $y = 0, int $z = -10): int {
     echo("<br>Example function execution<br>");
