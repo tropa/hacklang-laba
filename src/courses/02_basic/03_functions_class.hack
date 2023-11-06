@@ -11,10 +11,27 @@ async function render(): Awaitable<void> {
 
     // format_strings_examaple();
 
-    inout_example();
+    // inout_example();
+
+    function_references();
 
     
     echo "<br/><h1>End of file execution</h1><br/>";
+}
+
+function function_references(){
+    echo "<br/>Format Function References example>>>>><br/>";
+    $x = takes_int<>;
+
+    \var_dump($x);
+
+    echo("<br>");
+    $x(10); //function takes_int with param 10
+
+    $x("string"); // error
+
+    echo "<br/>>>>>>End of Format Strings<br/>";
+
 }
 
 function inout_example(){
@@ -118,7 +135,7 @@ function inproduction_example(){
     echo("result is : ".function_example());
     echo("result is : ".function_example(1, 2, 3));
 
-    //need to add posibility to skip some prameters
+    // need to find out posibility to skip some prameters
     // echo("result is : ".function_example(3, $_, 4));
 
     echo "<br/>>>>>>End of inproduction example<br/>";
