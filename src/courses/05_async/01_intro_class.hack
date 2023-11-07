@@ -14,12 +14,12 @@ echo <<<'EOD'
 
         <main>
         <h1>Async</h1>
-            <a href="/" type="button" class="btn btn-outline-secondary">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"></path>
-                </svg>
-                Back
-            </a>
+        <a href="/" type="button" class="btn btn-outline-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"></path>
+            </svg>
+            Back
+        </a>
         <p class="fs-5 col-md-8">
             
         </p>
@@ -34,7 +34,7 @@ echo <<<'EOD'
 
         <div class="row g-5">
             <div class="col-md-12">
-             <p>
+            <p>
                 There are different ways to make your computer faster... Let's look at some of them, the most commonly used.
             </p>
             <p>
@@ -502,6 +502,20 @@ echo <<<'EOD'
                             But still remember that the main goal of asynchrony is not so much to speed up the code as to eliminate blocking when the interface does not respond to user actions. This is what we call a bad experience and this is what we should strive to eliminate.
                         </p>
                     </div>
+                    
+                </div>
+                
+            </div>
+            <br/>
+            <p>
+                <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Useful links
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <a traget="_blank" href="https://docs.hhvm.com/hack/asynchronous-operations/introduction">Asynchronous Operations: Introduction</a>
+
                 </div>
             </div>
             
