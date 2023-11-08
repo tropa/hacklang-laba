@@ -8,13 +8,35 @@ async function render(): Awaitable<void> {
 
     // properties_example();
 
-    inheritance_example();
+    constructors_example();
 
 
 
     echo "<br/><h1>OPP Classes lesson</h1><br/>";
 }
 
+
+function constructors_example(){
+    echo "<br/>Constructors example>>>>><br/>";
+
+    $b = new Constructors\User(34, "Andrei");
+    echo "<br> Use id ".$b-> get_id();
+    echo "<br> Use name ".$b-> get_name();
+    echo "<br>";
+
+    try{
+        $p = new Constructors\PremiumUser(30, "Dima", "premium");
+        // $p = new Constructors\PremiumUser(30, "Dima");
+    } catch(\Exception $e){
+        \var_dump ($e);
+    }
+
+    echo "<br> Use id ".$p-> get_id();
+    echo "<br> Use name ".$p-> get_name();
+    echo "<br> Use status ".$p-> get_status();
+
+    echo "<br/>>>>>>End of Constructors example<br/>";
+}
 
 function inheritance_example(){
     echo "<br/>Inheritance example>>>>><br/>";
