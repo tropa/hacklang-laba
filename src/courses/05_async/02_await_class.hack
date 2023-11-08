@@ -157,6 +157,107 @@ echo <<<'EOD'
                         </div>
                     </div>
                 </div>
+                
+                <br/>
+                <br/>
+
+                <h4><span class="badge bg-secondary">2. Awaiting  </span></h4>
+
+                <div class="card" >
+                    <div class="card-body">
+                        <div class="alert alert-light" role="alert">
+                            <p>
+                                Note that only asynchronous functions can pass control to other asynchronous functions, 
+                                so <code>await</code> can only be used in an asynchronous function. 
+                                For non-async places, we need to use <code>join()</code>.
+                            </p>
+                            <p>
+                                HH\Asio\join takes an Awaitable and blocks until it resolves to a result.
+                            </p>
+
+                            <div class="highlight fbgfm source-language-Hack">
+                                <pre>
+                                    async function get_curl_content(Set<string> $urls): Awaitable&lt;Vector&lt;string&gt;&gt; {
+                                    &nbsp;&nbsp;&nbsp;$content = Vector {};
+
+                                    &nbsp;&nbsp;&nbsp;foreach ($urls as $url) {
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$str = await \HH\Asio\curl_exec($url);
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$content[] = \substr($str, 0, 10);
+                                    &nbsp;&nbsp;&nbsp;} 
+
+                                    &nbsp;&nbsp;&nbsp;return $content;
+                                    }
+
+                                    <<__EntryPoint>>
+                                    function join_main(): void {
+                                    &nbsp;&nbsp;&nbsp;$urls = Set {
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'https://hhvm.com/blog/2020/05/04/hhvm-4.56.html',
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'https://hhvm.com/blog/2020/10/21/hhvm-4.80.html',
+                                    &nbsp;&nbsp;&nbsp;};
+
+                                    &nbsp;&nbsp;&nbsp;$content = HH\Asio\join(get_curl_content($urls));
+                                    &nbsp;&nbsp;&nbsp;\var_dump($content);
+                                    }
+
+                                    Run this code with the following command:
+                                    <code>docker exec -it hack-laba hhvm /var/www/src/courses/05_async/examples/awaitjoin.hack</code>
+
+                                    The result will be:
+                                    <span class="php-output">
+                                        object(HH\Vector) (2) {
+                                        [0]=>
+                                        string(10) "<!DOCTYPE "
+                                        [1]=>
+                                        string(10) "<!DOCTYPE "
+                                        }
+                                    </span>
+                                </pre>
+                                
+                            </div>
+
+                            <p>
+                                You can play with the value of the substr function arguments to get more than 10 characters of response.
+                            </p>
+
+                            <p>
+                                <code>curl_exec()</code> function is <strong>asynchronous by design</strong>. This means that we will not be able to use it in any other way than in an asynchronous manner,
+                                that is, our user-defined function <code>get_curl_content()</code>, inside of which we call <code>curl_exec()</code>, must be asynchronous and will return an <code>Awaitable&lt;T&gt;</code>.
+                            </p>
+                            <p>
+                                As you remember from the previous section, if the function returned us an <code>Awaitable&lt;T&gt;</code> you can get the result of calculating this function from it using the <code>await</code> operator.
+                            </p>
+
+                            <p>
+                                However, you cannot use the <code>await</code> operator inside a synchronous function. We start walking in circles. 
+                                In order to run an asynchronous function, we need to place it inside an asynchronous function, which can only be called from an asynchronous function... 
+                                this can drive you crazy at the initial stage.
+                            </p>
+
+                            <p>
+                                HH\Asio\join():
+                                
+                                <ul>
+                                    <li>
+                                        <strong>takes</strong> an <code>Awaitable&lt;T&gt;</code> <span style="font-size:8px">(Thank God somewhere you can put this asynchronous call)</span>
+                                    </li>
+                                    <li>
+                                        blocks entire script,
+                                    </li> 
+                                    <li>
+                                        resolves to a result...
+                                    </li>
+                                    <li>
+                                        releases the script!
+                                    </li>
+                                </ul>
+                            </p>
+
+                            <div class="alert alert-warning" role="alert">
+                                It would be nonsense to place a HH\Asio\join() function call inside an asynchronous function. Read or guess for yourself why.
+                            </div>
+                        </div>
+                    </div>
+                </div>
 <br/>
             <p>
                 <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -171,6 +272,7 @@ echo <<<'EOD'
             </div>
             </div>
         </div>
+        
 
     </main>
 
