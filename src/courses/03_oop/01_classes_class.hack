@@ -21,20 +21,20 @@ function object_disposal_example(){
 
     using ($f1 = new OD\TextFile("file1.txt", "rw")) {
         //  echo "\$f1 is >" . $f1 . "<\n";  // usage not permitted
-        echo "\$f1 is >".$f1->__toString()."<\n";
+        echo "<br>\$f1 is >".$f1->__toString()."<br>";
         // work with the file
         $f1->close(); // close explicitly
         $f1->close(); // try to close again
     } // dispose called here
 
     using ($f2 = new OD\TextFile("file2.txt", "rw")) {
-        echo "\$f2 is >".$f2->__toString()."<\n";
+        echo "<br>\$f2 is >".$f2->__toString()."<br>";
         // work with the file
         // no explicit close
     } // dispose called here
 
     using ($f3 = OD\TextFile::open_TextFile("file3.txt", "rw")) {
-        echo "\$f3 is >".$f3->__toString()."<\n";
+        echo "<br>\$f3 is >".$f3->__toString()."<br>";
         // work with the file
         // no explicit close
     } // dispose called here
