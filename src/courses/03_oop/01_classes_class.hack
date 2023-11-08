@@ -1,5 +1,6 @@
 namespace Courses;
     use namespace Courses\In;
+    use namespace Courses\OD;
 
 async function render(): Awaitable<void> {
     echo "<h1>OPP Classes lesson</h1> <br/>";
@@ -8,11 +9,45 @@ async function render(): Awaitable<void> {
 
     // properties_example();
 
-    constructors_example();
+    // constructors_example();
 
-
+    object_disposal_example();
 
     echo "<br/><h1>OPP Classes lesson</h1><br/>";
+}
+
+function object_disposal_example(){
+    echo "<br/>Object Disposal example>>>>><br/>";
+
+    using ($f1 = new OD\TextFile("file1.txt", "rw")) {
+        //  echo "\$f1 is >" . $f1 . "<\n";  // usage not permitted
+        echo "\$f1 is >".$f1->__toString()."<\n";
+        // work with the file
+        $f1->close(); // close explicitly
+        $f1->close(); // try to close again
+    } // dispose called here
+
+    using ($f2 = new OD\TextFile("file2.txt", "rw")) {
+        echo "\$f2 is >".$f2->__toString()."<\n";
+        // work with the file
+        // no explicit close
+    } // dispose called here
+
+    using ($f3 = OD\TextFile::open_TextFile("file3.txt", "rw")) {
+        echo "\$f3 is >".$f3->__toString()."<\n";
+        // work with the file
+        // no explicit close
+    } // dispose called here
+
+    using $f4 = OD\TextFile::open_TextFile("file4.txt", "rw");
+    echo "\$f4 is >".$f4->__toString()."<\n";
+    using $f5 = new OD\TextFile("file5.txt", "rw");
+    echo "\$f5 is >".$f5->__toString()."<\n";
+    // work with both files
+    // no explicit close
+    // dispose called here for both $f4 and $f5
+
+    echo "<br/>>>>>>End of Object Disposal example<br/>";
 }
 
 
