@@ -131,9 +131,15 @@ echo <<<END
                   Collections and generic
                 </button>
               </h2>
-              <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">
-                  
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">
+                    <ol class="icon-list">
+                      <li>
+                        <a href="/?course=04_collections&class=01_array_collections">Arrays And Collections</a>
+                      </li>
+                      <li>
+                        <a href="/?course=04_collections&class=02_generics">Generics</a>
+                      </li>
                 </div>
               </div>
             </div>
