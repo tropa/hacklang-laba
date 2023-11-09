@@ -5,12 +5,25 @@ use namespace Courses\Enum;
 async function render(): Awaitable<void> {
     echo "<h1>OOP Built In Types lesson</h1> <br/>";
 
-    enum_example();
+    // enum_example();
+    
+    enum_class_example();
 
     echo "<br/><h1>End of OOP Built In Types lesson</h1><br/>";
 }
 
+function enum_class_example(){
+    echo "<br/>Enum class example>>>>><br/>";
+
+    
+    \var_dump(Names::Hello);
+
+
+    echo "<br/>>>>>>End of Enum class example<br/>";
+}
+
 function enum_example(){
+    echo "<br/>Enum example>>>>><br/>";
     $names = Position::getNames();
 
     echo "<br> ----- getValues() / getNames() finctions ---";   
@@ -89,6 +102,7 @@ function enum_example(){
     echo "<br> '1' as Position ";
     \var_dump('1' as Position); // CAUTION - '1'
 
+    echo "<br/>>>>>>End of Enum example<br/>";
 }
 
 enum Position: int {
@@ -97,4 +111,10 @@ enum Position: int {
   Left = 2;
   Right = Position::Top + 10;
   Center = 4;
+}
+
+enum class Names: IHasName {
+  HasName Hello = new Enum\HasName('hello');
+  HasName World = new Enum\HasName('world');
+  ConstName Bar = new Enum\ConstName();
 }
