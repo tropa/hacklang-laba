@@ -7,10 +7,28 @@ async function render(): Awaitable<void> {
 
     // enum_example();
     
-    enum_class_example();
+    // enum_class_example();
+
+    classname_example();
+
+
 
     echo "<br/><h1>End of OOP Built In Types lesson</h1><br/>";
 }
+
+function classname_example(){
+    echo "<br/>Classname example>>>>><br/>";
+
+    
+    \var_dump(Enum\HasName::class);
+    echo "<br>".Enum\HasName::class;
+
+
+
+
+    echo "<br/>>>>>>End of Classname example<br/>";
+}
+
 
 function enum_class_example(){
     echo "<br/>Enum class example>>>>><br/>";
