@@ -6,7 +6,7 @@ async function render(): Awaitable<void> {
 
     // traits_example();
 
-    traits_requirements_example();
+    // traits_requirements_example();
 
 
     echo "<br/><h1>End of OOP Traits And Interfaces lesson</h1><br/>";

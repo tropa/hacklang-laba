@@ -4,7 +4,7 @@ class UnmutableIntBox {
 
     protected int $value = 0;
 
-    public function __construct() {
+    public function __construct(int $new_value) {
         $this->value = $new_value;
     }
 
@@ -12,12 +12,12 @@ class UnmutableIntBox {
         // echo "<br/>Parent method<br/>";
         return $this->value;
     }
+
+    
 }
 
 class MutableIntBox extends UnmutableIntBox {
 
-
-    
     public function set(int $value): void {
         $this->value = $value;
     }

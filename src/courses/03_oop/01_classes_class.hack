@@ -1,6 +1,7 @@
 namespace Courses;
     use namespace Courses\In;
     use namespace Courses\OD;
+    use namespace Courses\Constructors;
 
 async function render(): Awaitable<void> {
     echo "<h1>OPP Classes lesson</h1> <br/>";
@@ -9,7 +10,9 @@ async function render(): Awaitable<void> {
 
     // properties_example();
 
-    constructors_example();
+    // inheritance_example();
+
+    // constructors_example();
 
     // object_disposal_example();
 
@@ -80,7 +83,7 @@ function inheritance_example(){
     
     echo("<br> Get from UnmutableIntBox =".$b->get());
 
-    $x = new In\MutableIntBox();
+    $x = new In\MutableIntBox(34);
     echo("<br> UnmutableIntBox <br>");
     try{
         echo("<br> Get from MutableIntBox ".$x -> get());

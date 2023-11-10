@@ -5,9 +5,9 @@ use namespace Courses\Enum;
 async function render(): Awaitable<void> {
     echo "<h1>OOP Built In Types lesson</h1> <br/>";
 
-    // enum_example();
+    enum_example();
     
-    // enum_class_example();
+    enum_class_example();
 
     classname_example();
 
