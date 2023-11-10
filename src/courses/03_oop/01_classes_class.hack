@@ -9,9 +9,9 @@ async function render(): Awaitable<void> {
 
     // properties_example();
 
-    // constructors_example();
+    constructors_example();
 
-    object_disposal_example();
+    // object_disposal_example();
 
     echo "<br/><h1>OPP Classes lesson</h1><br/>";
 }
