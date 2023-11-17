@@ -113,7 +113,8 @@ async function render(): Awaitable<void> {
 
                     <div class="highlight fbgfm source-language-Hack">
                         <pre>
-                            // we have a test file with lots of rows in src/courses/02_basic/examples/huge_csv.txt
+                            we have a test file with lots of rows in src/courses/02_basic/examples/huge_csv.txt
+                            run <code>docker exec -it hack-laba hhvm /var/www/src/courses/02_basic/examples/file_without_yield.hack</code>
                             <span class="php-output">
                                 Row count is 471930
                                 Starting memory usage: 1
