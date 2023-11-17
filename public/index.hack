@@ -15,13 +15,18 @@ async function main(): Awaitable<void> {
     $course = \strval($_REQUEST['course']) ?? '01_intro';
     $class = \strval($_REQUEST['class']) ?? null;
 
-
-
     $file =  __DIR__."/../src/courses/{$course}/{$class}_class.hack";
+
 
     if(\file_exists($file)){
       require_once $file;
       \Courses\render();
+    }
+    else
+    {
+      $file =  __DIR__."/../src/404.hack";
+      require_once $file;
+      Templates\Render404();
     }
   }
   else {

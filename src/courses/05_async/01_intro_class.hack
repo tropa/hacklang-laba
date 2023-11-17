@@ -62,6 +62,11 @@ echo <<<'EOD'
                         </p>
 
                         <p>
+                            In practice, it is not so important for us, as consumers, whether our program is executed in different processes, threads, or anything else in parallel. 
+                            If only it worked faster and did not lose responsiveness during its execution.
+                        </p>
+
+                        <p>
                             There are three ways to speed up program execution: 
                             <ul>
                                 <li>    

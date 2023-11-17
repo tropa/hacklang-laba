@@ -96,6 +96,9 @@ echo <<<END
                     <li>
                       <a href="/?course=02_basic&class=05_attributes">Attributes</a>
                     </li>
+                    <li>
+                      <a href="/?course=02_basic&class=06_generators">Yield (Generators)</a>
+                    </li>
                   </ol>
                   Basic language constructs.
                 </div>
@@ -119,6 +122,9 @@ echo <<<END
                     </li>
                     <li>
                       <a href="/?course=03_oop&class=03_builtin_types">Built In Types</a>
+                    </li>
+                    <li>
+                      <a href="/?course=03_oop&class=04_solid">Extended OOP</a>
                     </li>
                   </ol>
                 </div>
