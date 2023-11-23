@@ -177,14 +177,146 @@ async function render(): Awaitable<void> {
                 </pre>
             </div>
 
+            <p>
+                We have prepared an empty array in advance <code>$lines = vec[];</code>.
+                We plan to add the result of calculations into it.
+                Inside the loop, using the <code>fgets()</code> function, we read line by line from the file, and add each line to the <code>$lines[]</code> array to the existing ones.
+                Arrays in PHP are designed in a simple manner; you don't care about memory allocation or types, but simply shove whatever you want in there.
+                However, under the hood it's not the same. 
+                The computer must know the size of the array in order to properly allocate and clean up the memory that is used to create it. 
+                What for you as a programming language user looks like you took it and put it in an array is actually a complex and expensive procedure.
+            </p>
+            <p>
+                The engine doesn't know how much memory to allocate to your array. The following algorithm is used:
+                <ul>
+                    <li>A memory area of size N is allocated first.</li>
+                    <li>User adds N-1 items.</li>
+                    <li>The system allocates the next N bytes, as if increasing the size of the array, and it does this immediately in leaps and bounds.
+                        Now the array size is 2N.
+                    </li>
+                </ul>
+            </p>
+            <p>
+                Got it? What's the catch? The array has suddenly doubled in size even though it is not half full. 
+                This is how a hash table works. This is how dynamic arrays work.
+            </p>
+            <p>
+                Please also remember that the size of the array is not equal to the size of the information stored in it. 
+                According to various sources, for PHP version 5 the difference was up to 18 times; in PHP 7 it was no longer so dramatic, but nevertheless, an array is a complex structure (both literally and figuratively), which requires significant maintenance overhead.
+                Despite the fact that in the Hack, arrays are implemented in a slightly different way and work more efficiently than in native PHP, the concept still remains the same, since arrays are still dynamic.
+            </p>
+            <p>
+                
+            </p>
+
             <div class="alert alert-info" role="alert">
                 <div style="float:left; margin-right:10px; height:75px">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-hand-index-fill" viewBox="0 0 16 16">
                     <path d="M8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v5.34l-1.2.24a1.5 1.5 0 0 0-1.196 1.636l.345 3.106a2.5 2.5 0 0 0 .405 1.11l1.433 2.15A1.5 1.5 0 0 0 6.035 16h6.385a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.271-2.715a2 2 0 0 0-1.99-2.199h-.581a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.632 2.632 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002z"/>
                     </svg>
                 </div>
-                The generator allows you to write code using a foreach statement to iterate over a set of data without having to create an array in memory.
+                If you decide to write data to an array whose final size is unknown, I can only say: God help you.
             </div>
+
+            <br/>
+            <h2>How to be?</h2>
+            <div class="mb-10">
+                <p>
+                    The generator allows you to write code using a foreach statement to iterate over a set of data without having to create an array in memory. 
+                    In this case, the data size can be any.
+                </p>
+            </div>
+
+            <p>
+                Let's open the <code>/var/www/src/courses/02_basic/examples/file_with_yield.hack</code> file. 
+            </p>
+            <div class="highlight fbgfm source-language-Hack">
+                <pre>
+                    async function csv_reader(string $filename): AsyncGenerator&lt;string&gt {
+                        &nbsp;&nbsp;&nbsp;$f = \fopen($filename, 'rb');
+
+                        &nbsp;&nbsp;try {
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while ( ($line = \fgets($f)) !== false) {
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield rtrim($line, "\r\n");
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}
+                        &nbsp;&nbsp;} finally {
+                            &nbsp;&nbsp;&nbsp;&nbsp;\fclose($f);
+                        &nbsp;&nbsp;&nbsp;}
+                        }
+                </pre>
+            </div>
+
+            <p>
+                We've reworked our code. The function that read the file no longer returns a ready-made array of lines from this file, but generates each line. Feel it.
+            </p>
+            <p>
+                It works out the answer on the fly.
+            </p>
+            <ul>
+                <li>In an infinite loop with a condition that runs until the fgets function returns something, we take one line.</li>
+                <li>Pause script execution.</li>
+                <li>When everything is frozen and waiting, we generate the result and issue it at the exit of the function.</li>
+                <li>When the calling code has received the result that we generated, we resume the script.</li>
+            </ul>
+
+            <p>Take a look at the result of reading the same file using the generator:</p>
+
+            <div class="highlight fbgfm source-language-Hack">
+                <pre>
+                    we have a test file with lots of rows in src/courses/02_basic/examples/huge_csv.txt
+                    run <code>docker exec -it hack-laba hhvm /var/www/src/courses/02_basic/examples/file_with_yield.hack</code>
+                    <span class="php-output">
+                        Row count is 471930
+                        Starting memory usage: 1
+                        Final memory usage: 1
+                        0 Mbytes difference
+                    </span>
+                </pre>
+            </div>
+
+            <p>Impressive?</p>
+            <p>
+                Generators do not consume memory. 
+                In our case, the example is a little artificial, since we do not use the strings obtained from <code>csv_reader()</code> anywhere. 
+                However, we got rid of an array of indeterminate size and the chance of crashing the application with an out-of-memory error.
+            </p>
+
+            <p>
+                You can also find two other files in the folder with code examples and try to run them.
+            </p>
+            <ul>
+                <li><code>range_without_yield.hack</code>
+                <li><code>range_with_yield.hack</code>
+            </ul>
+
+            <div class="highlight fbgfm source-language-Hack">
+                <pre>
+                    run <code>docker exec -it hack-laba hhvm /var/www/src/courses/02_basic/examples/range_without_yield.hack</code>
+                    <span class="php-output">
+                        Generating lot of numbers consuming the memory...
+                        Starting memory usage: 1048576
+                        Final memory usage: 2097152
+                        1048576 bytes difference
+                    </span>
+                </pre>
+            </div>
+
+            <div class="highlight fbgfm source-language-Hack">
+                <pre>
+                    run <code>docker exec -it hack-laba hhvm /var/www/src/courses/02_basic/examples/range_with_yield.hack</code>
+                    <span class="php-output">
+                        Generating lot of numbers safely
+                        Starting memory usage: 1048576
+                        Final memory usage: 1048576
+                        0 bytes difference
+                    </span>
+                </pre>
+            </div>
+
+            <p>
+                The code in these files is extremely simple. try to figure it out yourself.
+            </p>
+            
         </main>
 EOD;
 }
