@@ -4,7 +4,7 @@ use namespace HH\Lib\File;
 function xrange($start, $limit, $step = 1) {
     if ($start <= $limit) {
         if ($step <= 0) {
-            throw new LogicException('Шаг должен быть положительным');
+            throw new LogicException('Step must be positive');
         }
 
         for ($i = $start; $i <= $limit; $i += $step) {
@@ -12,7 +12,7 @@ function xrange($start, $limit, $step = 1) {
         }
     } else {
         if ($step >= 0) {
-            throw new LogicException('Шаг должен быть отрицательным');
+            throw new LogicException('Step must be negative');
         }
 
         for ($i = $start; $i >= $limit; $i += $step) {
