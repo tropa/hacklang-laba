@@ -102,18 +102,72 @@ echo <<<'EOD'
                         </p>
                         
                         <p>
-                           A keyset can only contain string or int values.
+                           A keyset can <strong>only</strong> contain <strong>string</strong> or int <strong>values</strong>.
                         </p>
                         
+                        <p>
+                            Study the official documentation, there are brief examples that demonstrate the essence of the differences between this type of collection and others.
+                        </p>
+                            
+                        <div class="innerContent">
+                            <div class="highlight fbgfm source-language-Hack">
+                                <pre>
+                                        If you want a function to return keyset:
+                                        <code>
+                                        function get_items(): keyset&lt;string&gt; {
+                                        &nbsp;&nbsp;&nbsp;$items = keyset['a', 'b', 'c'];
+                                        &nbsp;&nbsp;&nbsp;return $items;
+                                        }
+                                        </code>
+                                </pre>
+
+                            </div>
+                        </div>
+
+                        <p>
+                            For us keyset is an array with key === value.
+                        </p>
 
                         <div class="innerContent">
                             <div class="highlight fbgfm source-language-Hack">
                                 <pre>
-                                    
-                                        
-                                   
+                                    $items = keyset['a', 'b', 'c'];
+                                    echo $items['a'];
+
                                     Output:
-                                       
+                                    a
+                                </pre>
+
+                            </div>
+                        </div>
+
+                        <p>
+                            If you add to keyset many identical values, it will contain the last one.  
+                        </p>
+
+                        <div class="innerContent">
+                            <div class="highlight fbgfm source-language-Hack">
+                                <pre>
+                                    $items = keyset['a', 'a', 'b', 'c'];
+                                    \var_dump($items);
+
+                                    Output:
+                                    keyset(3) { string(1) "a" string(1) "b" string(1) "c" }
+                                </pre>
+
+                            </div>
+                        </div>
+
+                        <p>
+                            The comparison depends on the order in which the values are stored, since two arrays are compared sequentially.
+                        </p>
+
+                        <div class="innerContent">
+                            <div class="highlight fbgfm source-language-Hack">
+                                <pre>
+                                    keyset[1] === keyset[1]; // true
+                                    keyset[1, 2] === keyset[2, 1]; // false
+                                    Keyset\equal(keyset[1, 2], keyset[2, 1]); // true
                                 </pre>
 
                             </div>
@@ -146,5 +200,8 @@ echo <<<'EOD'
 EOD;
 
 // paste code here and find the output in browser
+
+$items = keyset['a', 'a', 'b', 'c'];
+\var_dump($items);
 
 }

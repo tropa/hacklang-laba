@@ -17,4 +17,4 @@ ADD . /var/www
 # Reconfigure HHVM
 ADD hhvm.prod.ini /etc/hhvm/site.ini
 
-EXPOSE 80
+EXPOSE 8080
